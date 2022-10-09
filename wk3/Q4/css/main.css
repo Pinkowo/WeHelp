@@ -1,0 +1,113 @@
+html{
+    font-size: 20px;
+}
+body{
+    margin: 0;
+}
+header{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+.header-items{
+    display: flex;
+    flex-direction:row;
+}
+.hamburger{
+    display: none;
+}
+.h-item{
+    margin-left:30px;
+}
+nav{
+    height: 300px;
+    background-color: rgb(144, 214, 230);
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 2rem;
+}
+section{
+    display: flex;
+    justify-content:center;
+}
+.grid-box{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width:1200px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /*網格區塊的寬度大小*/
+    grid-column-gap: 20px; /*網格區塊的左右間距*/
+    grid-row-gap: 20px; /*網格區塊的上下間距*/
+}
+.box-top{
+    grid-column: span 2;
+    background-color: rgb(144, 214, 230);
+    height:50px;
+    overflow: hidden;
+    display: flex;
+    align-items:center;
+}
+.box-top img{
+    width:80px;
+    margin-right: 10px;
+}
+.box-bottom{
+    grid-column: span 1;
+    overflow: hidden;
+    display: inline-grid;
+}
+.box-bottom img{
+    height:250px;
+    width:100%;
+    grid-area: 1 / 1 / 2 / 2;
+}
+.box-bottom div{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height:50px;
+    grid-area: 1 / 1 / 2 / 2;
+    align-self: end;
+    background-color: rgb(144, 214, 230);
+}
+.btn-box{
+    height:100px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+button{
+    padding: 20px 50px;
+}
+@media only screen and (max-width:1200px){
+    .grid-box{
+        width:90%;
+        grid-template-columns: repeat(2, 1fr); /*網格區塊的寬度大小*/
+    }
+    .box-top{
+        grid-column: span 1;
+    }
+    .box-bottom{
+        width:100%;
+        height:auto;
+    }
+    .box-bottom img{
+        object-fit: cover;
+    }
+}
+@media only screen and (max-width:600px){
+    .grid-box{
+        grid-template-columns: repeat(1, 1fr); /*網格區塊的寬度大小*/
+    }
+    .header-items{
+        display: none;
+    }
+    .hamburger{
+        display: block;
+        cursor: pointer;
+    }
+}
