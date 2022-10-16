@@ -1,0 +1,39 @@
+body{
+    margin: 0;
+}
+header{
+    height: 200px;
+    background-color: rgb(6, 39, 66);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+header div{
+    color:white;
+    font-size: 50px;
+}
+section{
+    padding-top: 20px;
+    font-size: 25px;
+}
+section div{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+form div{
+    display: flex;
+    align-items: center;
+}
+input{
+    margin-left: 10px;
+    padding: 5px;
+    width: 200px;
+}
+button{
+    width: 60px;
+    height: 30px;
+}
