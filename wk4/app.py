@@ -43,14 +43,14 @@ def signOut():
     session["login"]="signOut"
     return render_template("index.html")
 
-@app.route("/square",methods=["POST"])
-def redirectCount():
-    number = req.form["number"]
-    return redirect("/square/"+number)
+# @app.route("/square",methods=["POST"])
+# def redirectCount():
+#     number = req.form["number"]
+#     return redirect("/square/"+number)
 
-@app.route("/square/<number>")
+@app.route("/square/<int:number>",methods=["POST"])
 def printSquare(number):
-    answer = int(number)**2
+    answer = number**2
     return render_template("result.html",ans=str(answer))
 
 
