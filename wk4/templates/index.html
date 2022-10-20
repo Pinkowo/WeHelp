@@ -33,7 +33,7 @@
             </div>
             <hr/>
             <div>
-                <form action="/square" method="POST">
+                <form id="myForm" method="POST">
                     <div>
                         <b>計算正整數的平方</b>
                     </div>
@@ -42,10 +42,16 @@
                         <input type="text" id="number" name="number"><br>
                     </div>
                     <div>
-                        <button>計算</button>
+                        <button onclick="cal()">計算</button>
                     </div>               
                 </form>
             </div>
         </section>
+        <script>
+            let number = document.getElementById("number");
+            function cal(){
+                document.getElementById("myForm").action = "/square/"+number.value;
+            }
+        </script>
     </body>
 </html>
