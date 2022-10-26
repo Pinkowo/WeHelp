@@ -29,17 +29,15 @@ def signUp():
     name = req.form["name"]
     username = req.form["username"]
     password = req.form["password"]
-    mycursor.execute("SELECT username FROM member")
-    myresult = mycursor.fetchall()
-    for x in myresult:
-        if username in x:
-            return redirect("/error?message=帳號已經被註冊")        
+    mycursor.execute("SELECT * FROM member WHERE username = '"+ username + "'")
+    myresult = mycursor.fetchone()
+    if not myresult == None:
+        return redirect("/error?message=帳號已經被註冊")       
     sql = "INSERT INTO member (name, username, password) VALUES (%s, %s, %s)"
     val = (name, username, password)
     mycursor.execute(sql, val)
     mydb.commit()
-    return render_template("index.html")
-    
+    return render_template("index.html")  
 
 @app.route("/signin",methods=["POST"])
 def signIn():
@@ -47,12 +45,12 @@ def signIn():
     password = req.form["password2"]   
     if account=="" or password=="":
         return redirect("/error?message=請輸入帳號、密碼")   
-    mycursor.execute("SELECT * FROM member")
-    myresult = mycursor.fetchall()
-    for x in myresult:
-        if account in x[1] and password in x[2]:
-            session["login"] = x
-            return redirect("/member")        
+    mycursor.execute("SELECT * FROM member WHERE username = '"+ account +"' AND \
+        password = '"+ password +"'")
+    myresult = mycursor.fetchone()
+    if not myresult == None:
+        session["login"] = myresult
+        return redirect("/member")   
     return redirect("/error?message=帳號或密碼輸入錯誤")
 
 @app.route("/member")
@@ -87,7 +85,5 @@ def message():
     mycursor.execute(sql,val)
     mydb.commit()
     return redirect("/member")
-    
-
 
 app.run(port=3000)
