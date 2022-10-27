@@ -23,13 +23,15 @@ app.secret_key="omega"
 @app.route("/")
 def index():
     return render_template("index.html")
-
+  
 @app.route("/signup",methods=["POST"])
 def signUp():
     name = req.form["name"]
     username = req.form["username"]
     password = req.form["password"]
-    mycursor.execute("SELECT * FROM member WHERE username = '"+ username + "'")
+    sql = "SELECT * FROM member WHERE username = %s"
+    val = (username)
+    mycursor.execute(sql,(val,))
     myresult = mycursor.fetchone()
     if not myresult == None:
         return redirect("/error?message=帳號已經被註冊")       
@@ -44,9 +46,10 @@ def signIn():
     account = req.form["account"]
     password = req.form["password2"]   
     if account=="" or password=="":
-        return redirect("/error?message=請輸入帳號、密碼")   
-    mycursor.execute("SELECT * FROM member WHERE username = '"+ account +"' AND \
-        password = '"+ password +"'")
+        return redirect("/error?message=請輸入帳號、密碼")
+    sql = "SELECT * FROM member WHERE username = %s AND password = %s"
+    val = (account,password)
+    mycursor.execute(sql,val)
     myresult = mycursor.fetchone()
     if not myresult == None:
         session["login"] = myresult
