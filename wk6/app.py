@@ -60,7 +60,6 @@ def memberPage():
     if session["login"]=="signOut":
         return render_template("index.html")
     else:
-        mycursor = mydb.cursor()
         sql = "SELECT member.name, message.content \
             FROM member INNER JOIN message ON member.id = message.member_id"
         mycursor.execute(sql)
