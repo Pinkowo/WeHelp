@@ -3,7 +3,6 @@ from flask import request as req
 from flask import redirect
 from flask import render_template
 from flask import session
-from flask import url_for
 import mysql.connector
 
 mydb = mysql.connector.connect(
@@ -82,9 +81,8 @@ def signOut():
 @app.route("/message", methods=['POST'])
 def message():
     content = req.form["content"]
-    sql = "INSERT INTO message (member_id, content) \
-        VALUES((SELECT id FROM member WHERE username=%s),%s)"
-    val = (session['login'][1],content)
+    sql = "INSERT INTO message (member_id, content) VALUES(%s,%s)"
+    val = (session['login'][3],content)
     mycursor.execute(sql,val)
     mydb.commit()
     return redirect("/member")
