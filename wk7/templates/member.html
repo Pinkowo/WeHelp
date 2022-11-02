@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/main.css">
+        <title>wk7</title>
+    </head>
+    <body>
+        <header>
+            <div>
+                歡迎光臨，這是會員頁
+            </div>
+        </header>
+        <section>
+            <div id="div-name">{{name}}，歡迎登入系統</div>
+            <div><a href="/signout">登出系統</a></div>
+            <hr>
+            <div>
+                <form id="form-search">
+                    <div>
+                        <b>查詢會員姓名</b>
+                    </div>
+                    <div>
+                        <input type="text" id="search" name="username">
+                        <button id="btn-search">查詢</button>
+                    </div>  
+                    <div id="div-username"></div>           
+                </form>
+            </div>
+            <hr>
+            <div>
+                <form id="form-renew" method="PATCH">
+                    <div>
+                        <b>更新我的姓名</b>
+                    </div>
+                    <div>
+                        <input type="text" id="renew" name="renew">
+                        <button id="btn-renew">更新</button>
+                    </div>    
+                    <div id="div-renew"></div>           
+                </form>
+            </div>
+        </section>
+        <script src="/static/main.js"></script>
+    </body>
+</html>
