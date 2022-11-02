@@ -70,16 +70,16 @@ class API(Resource):
                 myresult[0] +'', "username":''+ myresult[1] +'' }}
         if session["login"]=="signOut":
             data = {"data": None}
-        response = jsonify(data)
-        response.status_code = 200
-        return response    
+        res = make_response(jsonify(data),200)
+        return res 
     
     def patch(self):
         res = make_response(jsonify({"error":True}),404)
         request_name = request.get_json()
         # 更新資料庫和session
-        db.renew_update_set(request_name['name'],session["login"][3])
-        myresult = db.renew_select_from(session["login"][3])
+        id = session["login"][3]
+        db.renew_update_set(request_name['name'],id)
+        myresult = db.renew_select_from(id)
         session["login"] = myresult 
         # 判斷已登入則回傳ok     
         if session["login"]!="signOut":
