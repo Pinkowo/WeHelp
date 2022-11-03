@@ -18,9 +18,14 @@ function searchUsername(){
             return response.json();
         })
         .then(function(data){
-            let name = data.data.name;
-            let username = data.data.username;
-            usernameDiv.textContent = name+"("+username+")";
+            if(data.data == null){
+                usernameDiv.textContent = "查無此會員";
+            }
+            else{
+                let name = data.data.name;
+                let username = data.data.username;
+                usernameDiv.textContent = name+"("+username+")";
+            }
         })
         .catch(function(error) {
             console.log(error);
