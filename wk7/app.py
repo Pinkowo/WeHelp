@@ -75,14 +75,13 @@ class API(Resource):
     
     def patch(self):
         res = make_response(jsonify({"error":True}),404)
-        request_name = request.get_json()
-        # 更新資料庫和session
-        id = session["login"][3]
-        db.renew_update_set(request_name['name'],id)
-        myresult = db.renew_select_from(id)
-        session["login"] = myresult 
-        # 判斷已登入則回傳ok     
         if session["login"]!="signOut":
+            request_name = request.get_json()
+            # 更新資料庫和session
+            id = session["login"][3]
+            db.renew_update_set(request_name['name'],id)
+            myresult = db.renew_select_from(id)
+            session["login"] = myresult     
             res = make_response(jsonify({"ok":True}),200)
         return res
         
