@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/main.css">
+        <title>wk6</title>
+    </head>
+    <body>
+        <header>
+            <link rel="shortcut icon" href="#">
+            <div>
+                歡迎光臨，請註冊登入系統
+            </div>
+        </header>
+        <section>
+            <div>
+                <form action="/signup" method="POST" id="signup">
+                    <div>
+                        <b>註冊帳號</b>
+                    </div>
+                    <div>
+                        <label for="name">姓名</label>
+                        <input type="text" id="name" name="name" 
+                            onfocusout="addTip('name','姓名')"
+                            onkeyup="removeTip('name')"><br>
+                    </div>
+                    <div id="error-name" class="errorText"></div>
+                    <div>
+                        <label for="username">帳號</label>
+                        <input type="text" id="username" name="username" 
+                            onfocusout="addTip('username','帳號')"
+                            onkeyup="removeTip('username')"
+                            pattern="^[^ ].+[^ ]$"><br>
+                    </div>
+                    <div id="error-username" class="errorText"></div>
+                    <div>
+                        <label for="password">密碼</label>
+                        <input type="password" id="password" name="password" 
+                            onfocusout="addTip('password','密碼')" 
+                            onkeyup="removeTip('password')"
+                            pattern="^[^ ].+[^ ]$">
+                    </div>
+                    <div id="error-password" class="errorText"></div>
+                    <div>
+                        <button type="submit">註冊</button>
+                    </div>               
+                </form>
+            </div>
+            <hr>
+            <div>
+                <form action="/signin" method="POST" id="signin">
+                    <div>
+                        <b>登入系統</b>
+                    </div>
+                    <div>
+                        <label for="account">帳號</label>
+                        <input type="text" id="account" name="account" 
+                            onfocusout="addTip('account','帳號')"
+                            onkeyup="removeTip('account')"
+                            pattern="^[^ ].+[^ ]$"><br>
+                    </div>
+                    <div id="error-account" class="errorText"></div>
+                    <div>
+                        <label for="password2">密碼</label>
+                        <input type="password" id="password2" name="password2" 
+                            onfocusout="addTip('password2','密碼')" 
+                            onkeyup="removeTip('password2')"
+                            pattern="^[^ ].+[^ ]$">
+                    </div>
+                    <div id="error-password2" class="errorText"></div>
+                    <div>
+                        <button type="submit">登入</button>
+                    </div>               
+                </form>
+            </div>
+        </section>
+        <script src="/static/main.js"></script>
+    </body>
+</html>
